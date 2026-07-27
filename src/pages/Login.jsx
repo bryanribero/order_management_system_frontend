@@ -1,17 +1,18 @@
 import { useState } from 'react'
-import AuthForm from '../components/AuthForm'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './login.css'
-import team from '../assets/order-management-team.png'
-import { PackageCheck } from 'lucide-react'
+import LoginComponent from '../components/LoginComponent'
+import WelcomeComponent from '../components/WelcomeComponent'
+import PageTransition from '../effects/PageTransition'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [credentialError, setCredentialError] = useState('')
+  const [registerSuccess, setRegisterSuccess] = useState('')
 
   const changeEmail = (e) => setEmail(e.target.value)
   const changePassword = (e) => setPassword(e.target.value)
@@ -63,7 +64,6 @@ export default function Login() {
       setCredentialError('')
 
       setAccessToken(data.accessToken)
-      console.log(data)
       setIsAuthorized(true)
 
       navigate('/dashboard')
@@ -72,64 +72,61 @@ export default function Login() {
     }
   }
 
-  return (
-    <main className="main-login">
-      <div className="div-container">
-        <div className="container-welcome">
-          <div className="container-icon">
-            <span>
-              <PackageCheck className="icon" size={38} />
-            </span>
-            <span className="ordena">Ordena</span>
-          </div>
-          <h2>Gestión simple, resultados claros</h2>
-          <h1>Bienvenido a una forma más ordenada de trabajar.</h1>
-          <p>
-            Controlá cada pedido, coordiná entregas y mantené a tu equipo al día
-            desde un solo lugar.
-          </p>
-          <img src={team} alt="order-managment-team-image" />
-        </div>
-        <section className="card-login">
-          <div className="div-title">
-            <h2>Iniciá sesión</h2>
-            <p id="texto-p">
-              Ingresá tus datos para administrar tus pedidos y entregas.
-            </p>
-          </div>
+  const handlerRegister = async (e) => {
+    e.preventDefault()
 
-          {credentialError && (
-            <p role="alert" className="credencial-error">
-              {credentialError}
-            </p>
-          )}
-          <div className="div-form">
-            <AuthForm
+    setErrors([])
+    setRegisterSuccess('')
+
+    try {
+      const response = await fetch(
+        'https://order-management-system-995e.onrender.com/api/auth/register',
+        {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      )
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setErrors(data.errors)
+        return
+      }
+
+      setEmail('')
+      setPassword('')
+      setRegisterSuccess('Usuario registrado correctamente')
+
+      setErrors([])
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  return (
+    <div className="auth-container">
+      <PageTransition direction="left">
+        <main className="main-login">
+          <div className="div-container">
+            <WelcomeComponent />
+            <LoginComponent
               errors={errors}
-              handlerSubmit={handlerLogin}
+              handlerLogin={handlerLogin}
               email={email}
               password={password}
               changeEmail={changeEmail}
               changePassword={changePassword}
-              textSubmit={'Iniciar sesión'}
+              credentialError={credentialError}
             />
-            <hr />
-            <div className="container-register">
-              <p>
-                ¿Todavía no tenés una cuenta?
-                <Link to={'/register'} className="link">
-                  Crear usuario
-                </Link>
-              </p>
-
-              <p id="p-terms">
-                Al continuar, aceptás nuestros términos de uso y política de
-                privacidad.
-              </p>
-            </div>
           </div>
-        </section>
-      </div>
-    </main>
+        </main>
+      </PageTransition>
+    </div>
   )
 }

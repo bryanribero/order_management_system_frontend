@@ -1,17 +1,25 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation, BrowserRouter } from 'react-router-dom'
 import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
 import Register from './pages/Register'
+import { AnimatePresence } from 'framer-motion'
 
-function App() {
+function AnimatedRoutes() {
+  const location = useLocation()
+
   return (
-    <>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </>
+    </AnimatePresence>
+  )
+}
+function App() {
+  return (
+    <BrowserRouter>
+      <AnimatedRoutes />
+    </BrowserRouter>
   )
 }
 

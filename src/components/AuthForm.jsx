@@ -8,6 +8,7 @@ export default function AuthForm({
   handlerSubmit,
   errors,
   textSubmit,
+  placeholder,
 }) {
   return (
     <form onSubmit={handlerSubmit} className="card-form">
@@ -32,7 +33,7 @@ export default function AuthForm({
             name="password"
             type="password"
             value={password}
-            placeholder="Ingresá tu contraseña"
+            placeholder={placeholder}
             onChange={changePassword}
           />
           <FormError errors={errors} field={'password'} />
