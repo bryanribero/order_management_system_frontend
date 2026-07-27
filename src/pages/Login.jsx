@@ -3,6 +3,9 @@ import AuthForm from '../components/AuthForm'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+import './login.css'
+import team from '../assets/order-management-team.png'
+import { PackageCheck } from 'lucide-react'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -13,7 +16,7 @@ export default function Login() {
   const changeEmail = (e) => setEmail(e.target.value)
   const changePassword = (e) => setPassword(e.target.value)
 
-  const { login } = useContext(AuthContext)
+  const { setAccessToken, setIsAuthorized } = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -28,6 +31,7 @@ export default function Login() {
         'https://order-management-system-995e.onrender.com/api/auth/login',
         {
           method: 'POST',
+          credentials: 'include',
           headers: { 'Content-type': 'application/json' },
 
           body: JSON.stringify({
@@ -58,7 +62,9 @@ export default function Login() {
       setErrors([])
       setCredentialError('')
 
-      login()
+      setAccessToken(data.accessToken)
+      console.log(data)
+      setIsAuthorized(true)
 
       navigate('/dashboard')
     } catch (err) {
@@ -67,21 +73,63 @@ export default function Login() {
   }
 
   return (
-    <main>
-      <h1>Iniciar sesion</h1>
-      <span>{credentialError}</span>
-      <AuthForm
-        errors={errors}
-        handlerSubmit={handlerLogin}
-        email={email}
-        password={password}
-        changeEmail={changeEmail}
-        changePassword={changePassword}
-        textSubmit={'Iniciar sesión'}
-      />
-      <span>
-        ¿Aún no tienes una cuenta?<Link to={'/register'}> Crear cuenta</Link>
-      </span>
+    <main className="main-login">
+      <div className="div-container">
+        <div className="container-welcome">
+          <div className="container-icon">
+            <span>
+              <PackageCheck className="icon" size={38} />
+            </span>
+            <span className="ordena">Ordena</span>
+          </div>
+          <h2>Gestión simple, resultados claros</h2>
+          <h1>Bienvenido a una forma más ordenada de trabajar.</h1>
+          <p>
+            Controlá cada pedido, coordiná entregas y mantené a tu equipo al día
+            desde un solo lugar.
+          </p>
+          <img src={team} alt="order-managment-team-image" />
+        </div>
+        <section className="card-login">
+          <div className="div-title">
+            <h2>Iniciá sesión</h2>
+            <p id="texto-p">
+              Ingresá tus datos para administrar tus pedidos y entregas.
+            </p>
+          </div>
+
+          {credentialError && (
+            <p role="alert" className="credencial-error">
+              {credentialError}
+            </p>
+          )}
+          <div className="div-form">
+            <AuthForm
+              errors={errors}
+              handlerSubmit={handlerLogin}
+              email={email}
+              password={password}
+              changeEmail={changeEmail}
+              changePassword={changePassword}
+              textSubmit={'Iniciar sesión'}
+            />
+            <hr />
+            <div className="container-register">
+              <p>
+                ¿Todavía no tenés una cuenta?
+                <Link to={'/register'} className="link">
+                  Crear usuario
+                </Link>
+              </p>
+
+              <p id="p-terms">
+                Al continuar, aceptás nuestros términos de uso y política de
+                privacidad.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   )
 }

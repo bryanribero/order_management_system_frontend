@@ -4,7 +4,7 @@ export default function FormError({ errors, field }) {
   return (
     <>
       {fieldErrors?.length > 0 && (
-        <ul>
+        <ul role="alert" aria-live="polite">
           {fieldErrors.map((error, index) => (
             <li key={index}>{error.message}</li>
           ))}
