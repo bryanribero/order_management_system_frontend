@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import './login.css'
+import './auth.css'
 import LoginComponent from '../components/LoginComponent'
-import WelcomeComponent from '../components/WelcomeComponent'
+import WelcomeComponent from '../components/TextLogin'
 import PageTransition from '../effects/PageTransition'
 
 export default function Login() {

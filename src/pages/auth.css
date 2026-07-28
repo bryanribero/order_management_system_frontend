@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.container-welcome img {
+.container-text img {
   width: 100%;
   height: 12rem;
   border-radius: 0.75rem;
@@ -21,7 +21,7 @@
   box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.589);
 }
 
-.container-welcome .register-image {
+.container-text .register-image {
   height: 14rem;
   object-fit: fill;
 }
@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 
-.container-welcome {
+.container-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +47,7 @@
   gap: 1.8rem;
 }
 
-.container-welcome h1 {
+.container-text h1 {
   color: var(--text-h);
   font-size: 2.2rem;
   max-width: 480px;
@@ -57,7 +57,7 @@
   letter-spacing: 1px;
 }
 
-.container-welcome p {
+.container-text p {
   max-width: 420px;
   font-size: 0.95rem;
 }
@@ -68,7 +68,7 @@
   margin-left: 0.8rem;
 }
 
-.container-welcome h2 {
+.container-text h2 {
   font-size: 0.95rem;
   letter-spacing: 2px;
 }
@@ -294,16 +294,16 @@ button:active {
 }
 
 @media (max-width: 1370px) {
-  .container-welcome h1 {
+  .container-text h1 {
     font-size: 2rem;
     line-height: 2.4rem;
   }
 
-  .container-welcome .register-image {
+  .container-text .register-image {
     height: clamp(9rem, 13rem, 14rem);
   }
 
-  .container-welcome p {
+  .container-text p {
     font-size: 0.88rem;
   }
 
@@ -323,7 +323,7 @@ button:active {
 }
 
 @media (max-width: 1024px) {
-  .container-welcome {
+  .container-text {
     display: none;
   }
 
@@ -356,26 +356,25 @@ button:active {
   .card-login input {
     font-size: 0.85rem;
     padding: 0.7rem;
-    width: 100%; /* ocupa todo el ancho disponible */
-    max-width: none; /* elimina el límite de 400px */
-    margin: 0; /* evita que se desplace */
-    box-sizing: border-box; /* asegura que padding y borde se incluyan en el ancho */
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
   }
 
   button {
     padding: 0.9rem;
     font-size: 0.9rem;
-    width: 100%; /* ocupa todo el ancho */
+    width: 100%;
     max-width: none;
     margin-top: 2rem;
     box-sizing: border-box;
   }
 }
 
-/* Móviles */
 @media (max-width: 700px) {
-  .container-welcome {
-    display: none; /* sigue oculto */
+  .container-text {
+    display: none;
   }
 
   .div-container {
@@ -385,7 +384,7 @@ button:active {
 
   .card-login {
     width: 100%;
-    padding: 1rem; /* menos padding en móvil */
+    padding: 1rem;
     gap: 1.2rem;
   }
 

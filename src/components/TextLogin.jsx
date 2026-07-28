@@ -3,7 +3,7 @@ import team from '../assets/order-management-team.png'
 
 export default function WelcomeComponent() {
   return (
-    <div className="container-welcome">
+    <div className="container-text">
       <div className="container-icon">
         <span>
           <PackageCheck className="icon" size={38} />

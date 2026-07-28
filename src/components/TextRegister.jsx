@@ -3,7 +3,7 @@ import { PackageCheck } from 'lucide-react'
 
 export default function TextRegister() {
   return (
-    <div className="container-welcome right">
+    <div className="container-text right">
       <div className="container-icon">
         <span>
           <PackageCheck className="icon" size={38} />

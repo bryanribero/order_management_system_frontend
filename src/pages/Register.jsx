@@ -2,7 +2,7 @@ import RegisterComponent from '../components/RegisterComponent'
 import TextRegister from '../components/TextRegister'
 import PageTransition from '../effects/PageTransition'
 import { useState } from 'react'
-import './login.css'
+import './auth.css'
 import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
