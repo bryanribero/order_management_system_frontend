@@ -12,7 +12,6 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [credentialError, setCredentialError] = useState('')
-  const [registerSuccess, setRegisterSuccess] = useState('')
 
   const changeEmail = (e) => setEmail(e.target.value)
   const changePassword = (e) => setPassword(e.target.value)
@@ -67,43 +66,6 @@ export default function Login() {
       setIsAuthorized(true)
 
       navigate('/dashboard')
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  const handlerRegister = async (e) => {
-    e.preventDefault()
-
-    setErrors([])
-    setRegisterSuccess('')
-
-    try {
-      const response = await fetch(
-        'https://order-management-system-995e.onrender.com/api/auth/register',
-        {
-          method: 'POST',
-          headers: { 'Content-type': 'application/json' },
-
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      )
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setErrors(data.errors)
-        return
-      }
-
-      setEmail('')
-      setPassword('')
-      setRegisterSuccess('Usuario registrado correctamente')
-
-      setErrors([])
     } catch (err) {
       console.error(err)
     }

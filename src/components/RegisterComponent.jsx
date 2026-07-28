@@ -9,6 +9,7 @@ export default function RegisterComponent({
   changeEmail,
   changePassword,
   registerSuccess,
+  uniqueError,
 }) {
   return (
     <section className="card-login left">
@@ -20,8 +21,14 @@ export default function RegisterComponent({
       </div>
 
       {registerSuccess && (
-        <p role="alert" className="credencial-error">
+        <p role="alert" className="success-register">
           {registerSuccess}
+        </p>
+      )}
+
+      {uniqueError && (
+        <p role="alert" className="credencial-error">
+          {uniqueError}
         </p>
       )}
 

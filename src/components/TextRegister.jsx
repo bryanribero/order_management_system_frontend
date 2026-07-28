@@ -1,4 +1,4 @@
-import registerBackground from '../assets/register-background.png'
+import registerBackground from '../assets/register-background.webp'
 import { PackageCheck } from 'lucide-react'
 
 export default function TextRegister() {
