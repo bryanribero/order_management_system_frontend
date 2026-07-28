@@ -3,6 +3,7 @@ import TextRegister from '../components/TextRegister'
 import PageTransition from '../effects/PageTransition'
 import { useState } from 'react'
 import './login.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
   const [registerSuccess, setRegisterSuccess] = useState('')
@@ -10,12 +11,17 @@ export default function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   const changeEmail = (e) => setEmail(e.target.value)
   const changePassword = (e) => setPassword(e.target.value)
 
   const handlerRegister = async (e) => {
     e.preventDefault()
+
+    setIsLoading(true)
 
     setUniqueError('')
     setErrors([])
@@ -38,6 +44,8 @@ export default function Register() {
       const data = await response.json()
 
       if (!response.ok) {
+        setIsLoading(false)
+
         if (response.status === 409) {
           setErrors([])
           setUniqueError(data.errors?.[0]?.message)
@@ -54,8 +62,14 @@ export default function Register() {
       setErrors([])
 
       setRegisterSuccess('Usuario creado correctamente')
+
+      setTimeout(() => {
+        navigate('/login')
+      }, 1500)
     } catch (err) {
       console.error(err)
+    } finally {
+      setIsLoading(false)
     }
   }
   return (
@@ -73,6 +87,7 @@ export default function Register() {
               changePassword={changePassword}
               registerSuccess={registerSuccess}
               uniqueError={uniqueError}
+              isLoading={isLoading}
             />
           </div>
         </main>

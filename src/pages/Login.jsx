@@ -12,6 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [credentialError, setCredentialError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const changeEmail = (e) => setEmail(e.target.value)
   const changePassword = (e) => setPassword(e.target.value)
@@ -22,6 +23,8 @@ export default function Login() {
 
   const handlerLogin = async (e) => {
     e.preventDefault()
+
+    setIsLoading(true)
 
     setErrors([])
     setCredentialError('')
@@ -44,6 +47,8 @@ export default function Login() {
       const data = await response.json()
 
       if (!response.ok) {
+        setIsLoading(false)
+
         if (response.status === 400) {
           setCredentialError('')
           setErrors(data.errors)
@@ -68,6 +73,8 @@ export default function Login() {
       navigate('/dashboard')
     } catch (err) {
       console.error(err)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -85,6 +92,7 @@ export default function Login() {
               changeEmail={changeEmail}
               changePassword={changePassword}
               credentialError={credentialError}
+              isLoading={isLoading}
             />
           </div>
         </main>

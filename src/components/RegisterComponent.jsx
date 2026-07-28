@@ -10,6 +10,7 @@ export default function RegisterComponent({
   changePassword,
   registerSuccess,
   uniqueError,
+  isLoading,
 }) {
   return (
     <section className="card-login left">
@@ -42,6 +43,8 @@ export default function RegisterComponent({
           changePassword={changePassword}
           placeholder={'Mínimo 8 caracteres'}
           textSubmit={'Crear Cuenta'}
+          isLoading={isLoading}
+          textSubmitLoading={'Creando cuenta...'}
         />
         <hr />
         <div className="container-register">

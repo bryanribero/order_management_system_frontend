@@ -9,6 +9,8 @@ export default function AuthForm({
   errors,
   textSubmit,
   placeholder,
+  isLoading,
+  textSubmitLoading,
 }) {
   return (
     <form onSubmit={handlerSubmit} className="card-form">
@@ -40,7 +42,16 @@ export default function AuthForm({
         </div>
       </div>
 
-      <button type="submit">{textSubmit}</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? (
+          <>
+            <span className="spinner"></span>
+            {textSubmitLoading}
+          </>
+        ) : (
+          textSubmit
+        )}
+      </button>
     </form>
   )
 }

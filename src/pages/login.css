@@ -148,6 +148,10 @@ button {
   appearance: none;
   border: none;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   margin-top: 2rem;
   padding: 1rem;
   background-color: var(--button);
@@ -272,6 +276,21 @@ button:active {
   top: 40px;
   left: 0;
   right: 0;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 1370px) {

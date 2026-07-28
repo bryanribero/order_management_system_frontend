@@ -9,6 +9,7 @@ export default function LoginComponent({
   changeEmail,
   changePassword,
   credentialError,
+  isLoading,
 }) {
   return (
     <section className="card-login">
@@ -34,6 +35,8 @@ export default function LoginComponent({
           changePassword={changePassword}
           placeholder={'Ingresá tu contraseña'}
           textSubmit={'Iniciar sesión'}
+          isLoading={isLoading}
+          textSubmitLoading={'Iniciando sesión...'}
         />
         <hr />
         <div className="container-register">
