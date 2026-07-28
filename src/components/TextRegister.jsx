@@ -1,4 +1,4 @@
-import orderTeam from '../assets/ordena-team.png'
+import registerBackground from '../assets/register-background.png'
 import { PackageCheck } from 'lucide-react'
 
 export default function TextRegister() {
@@ -16,7 +16,11 @@ export default function TextRegister() {
         Registrate en pocos pasos y empezá a gestionar tus pedidos, entregas y
         equipo desde un solo lugar.
       </p>
-      <img src={orderTeam} alt="order-managment-team-image" />
+      <img
+        src={registerBackground}
+        alt="order-managment-team-image"
+        className="register-image"
+      />
     </div>
   )
 }
