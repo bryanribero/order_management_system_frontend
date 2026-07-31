@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard'
 import { AnimatePresence } from 'framer-motion'
 import PublicRoute from './components/routes/PublicRoute'
 import PrivateRoute from './components/routes/PrivateRoute'
+import Loading from './components/Loading'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -47,7 +48,6 @@ function AnimatedRoutes() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              {' '}
               <Dashboard />
             </PrivateRoute>
           }

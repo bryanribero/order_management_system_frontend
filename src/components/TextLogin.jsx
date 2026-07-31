@@ -6,7 +6,7 @@ export default function WelcomeComponent() {
     <div className="container-text">
       <div className="container-icon">
         <span>
-          <PackageCheck className="icon" size={38} />
+          <PackageCheck className="icon" size={40} />
         </span>
         <span className="ordena">Ordena</span>
       </div>

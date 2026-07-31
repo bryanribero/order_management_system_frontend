@@ -3,10 +3,12 @@
   --text-h: #f3f4f6;
   --text-black: rgb(49, 49, 49);
   --text-black-low: rgb(116, 116, 116);
-  --button: #1d5a40;
+  --text-loading: #255c44;
+  --text-loading-p: #4caf50;
+  --button: #255c44;
   --button-hover: #2c7253;
   --bg: #ebeae4;
-  --bg-green: #1d5a40;
+  --bg-green: #255c44;
   --border: #17171850;
   --border-focus: #0a0a0aaf;
   --error-bg: #fdecea;

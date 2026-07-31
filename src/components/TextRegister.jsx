@@ -6,7 +6,7 @@ export default function TextRegister() {
     <div className="container-text right">
       <div className="container-icon">
         <span>
-          <PackageCheck className="icon" size={38} />
+          <PackageCheck className="icon" size={40} />
         </span>
         <span className="ordena">Ordena</span>
       </div>
