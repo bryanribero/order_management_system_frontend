@@ -144,7 +144,7 @@
   gap: 0.7rem;
 }
 
-button {
+.auth-button {
   appearance: none;
   border: none;
   outline: none;
@@ -166,12 +166,12 @@ button {
   transition: all 0.2s ease-in;
 }
 
-button:hover {
+.auth-button:hover {
   background-color: var(--button-hover);
   transform: scale(1.03);
 }
 
-button:active {
+.auth-button:active {
   transform: scale(0.98);
 }
 

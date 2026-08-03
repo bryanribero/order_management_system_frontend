@@ -34,8 +34,6 @@ function AuthProvider({ children }) {
     }
 
     verifyAuthorization()
-    console.log(isAuthorized)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isAuthorized === null) return <Loading />

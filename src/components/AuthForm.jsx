@@ -42,7 +42,7 @@ export default function AuthForm({
         </div>
       </div>
 
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" disabled={isLoading} className="auth-button">
         {isLoading ? (
           <>
             <span className="spinner"></span>
