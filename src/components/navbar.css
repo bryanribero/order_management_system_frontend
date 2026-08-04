@@ -121,7 +121,8 @@
   color: var(--text-h);
 }
 
-.text-button {
+.text-button,
+.text-button-loading {
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 1px;

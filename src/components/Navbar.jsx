@@ -157,7 +157,7 @@ export default function Navbar() {
         {isLoading ? (
           <button className="logout" disabled>
             <span className="spinner-navbar"></span>
-            <span>Cerrando sesión</span>
+            <span className="text-button-loading">Cerrando sesión</span>
           </button>
         ) : (
           <button className="logout" onClick={logout}>
