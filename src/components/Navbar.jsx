@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './navbar.css'
 import {
   PackageCheck,
@@ -60,61 +60,97 @@ export default function Navbar() {
         <div className="">
           <span className="navbar-subtitle">GENERAL</span>
           <div className="container-options">
-            <Link className="navbar-link">
+            <NavLink
+              to={'/dashboard'}
+              end
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }
+            >
               <li>
                 <div className="container-icon-li">
                   <House className="icon icon-options" size={35} />
                   <span className="text-edit">Estadísticas</span>
                 </div>
               </li>
-            </Link>
-            <Link className="navbar-link">
+            </NavLink>
+            <NavLink
+              to={'/orders'}
+              end
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }
+            >
               <li>
                 <div className="container-icon-li">
                   <ClipboardList className="icon icon-options" size={35} />
                   <span className="text-edit">Pedidos</span>
                 </div>
               </li>
-            </Link>
-            <Link className="navbar-link">
+            </NavLink>
+            <NavLink
+              to={'/products'}
+              end
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }
+            >
               <li>
                 <div className="container-icon-li">
                   <Package className="icon icon-options" size={35} />
                   <span className="text-edit">Productos</span>
                 </div>
               </li>
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div className="">
           <span className="navbar-subtitle">GESTIÓN</span>
           <div className="container-options">
-            <Link className="navbar-link">
+            <NavLink
+              to={'/customers'}
+              end
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }
+            >
               <li>
                 <div className="container-icon-li">
                   <Users className="icon icon-options" size={35} />
                   <span className="text-edit">Clientes</span>
                 </div>
               </li>
-            </Link>
-            <Link className="navbar-link">
+            </NavLink>
+            <NavLink
+              to={'couriers'}
+              end
+              className={({ isActive }) =>
+                isActive ? 'navbar-link active' : 'navbar-link'
+              }
+            >
               <li>
                 <div className="container-icon-li">
                   <Van className="icon icon-options" size={35} />
                   <span className="text-edit">Repartidores</span>
                 </div>
               </li>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </ul>
       <div className="container-config">
-        <Link className="navbar-link">
+        <NavLink
+          to={'/config'}
+          end
+          className={({ isActive }) =>
+            isActive ? 'navbar-link active' : 'navbar-link'
+          }
+        >
           <div className="container-icon-li">
             <Settings className="icon icon-options" size={35} />
             <span className="text-edit">Configuración</span>
           </div>
-        </Link>
+        </NavLink>
       </div>
 
       <div className="container-logout">
