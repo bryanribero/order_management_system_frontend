@@ -1,0 +1,97 @@
+.container-product-table {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-head {
+  background-color: var(--bg);
+  border-top: 0.5px solid var(--border-table);
+  border-bottom: 0.5px solid var(--border-table);
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.products-table th,
+.products-table td {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-black);
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.button-edit {
+  appearance: none;
+  border: none;
+  outline: none;
+  height: fit-content;
+  padding: 0.3rem 0.6rem;
+  background-color: transparent;
+  border: 1px solid var(--border-table);
+  color: var(--text-black);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.product-item td {
+  border-bottom: 1px solid var(--border-table);
+}
+
+.button-delite {
+  appearance: none;
+  border: none;
+  outline: none;
+  height: fit-content;
+  padding: 0.3rem 0.6rem;
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  color: var(--error-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.td-button {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.button-edit:hover,
+.button-delite:hover {
+  transform: scale(1.1);
+}
+
+.products-table th:nth-child(1) {
+  width: 25%;
+}
+
+.products-table th:nth-child(2) {
+  width: 25%;
+}
+
+.products-table th:nth-child(3) {
+  width: 15%;
+}
+
+.products-table th:nth-child(4) {
+  width: 12%;
+}
+
+.products-table th:nth-child(5) {
+  width: 10%;
+}
+
+.products-table th:nth-child(6) {
+  width: 12%;
+}

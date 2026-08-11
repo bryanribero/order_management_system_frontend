@@ -20,6 +20,11 @@
   color: var(--text-loading-p);
 }
 
+.icon-loading {
+  background-color: transparent;
+  color: var(--bg-green);
+}
+
 .title {
   color: var(--text-loading);
   font-size: 4rem;

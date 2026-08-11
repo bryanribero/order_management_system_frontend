@@ -7,7 +7,7 @@ export default function Loading() {
     <main className="container-loading">
       <div className="container-logo">
         <span className="logo">
-          <PackageCheck className="icon" size={180} />
+          <PackageCheck className="icon-loading" size={180} />
         </span>
         <h1 className="title">
           {text.split('').map((letter, index) => (

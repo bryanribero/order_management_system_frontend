@@ -3,9 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(180deg, #266348 0%, #0f3123 100%);
-  height: 100vh;
-  min-width: 280px;
-  width: 13.5%;
 }
 
 .icon-logo {

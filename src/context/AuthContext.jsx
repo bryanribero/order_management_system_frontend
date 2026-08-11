@@ -11,14 +11,13 @@ function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState(null)
 
   useEffect(() => {
-    const verifyAuthorization = async () => {
+    const restoreSession = async () => {
       try {
         const response = await fetch(
-          'https://order-management-system-995e.onrender.com/api/auth/me',
+          'https://order-management-system-995e.onrender.com/api/auth/refresh',
           {
-            method: 'GET',
+            method: 'POST',
             credentials: 'include',
-            headers: { 'Content-type': 'application/json' },
           }
         )
 
@@ -27,13 +26,17 @@ function AuthProvider({ children }) {
           return
         }
 
+        const data = await response.json()
+
+        setAccessToken(data.accessToken)
         setIsAuthorized(true)
-      } catch {
+      } catch (error) {
+        console.error(error)
         setIsAuthorized(false)
       }
     }
 
-    verifyAuthorization()
+    restoreSession()
   }, [])
 
   if (isAuthorized === null) return <Loading />

@@ -88,6 +88,11 @@ export default function Navbar() {
                 </div>
               </li>
             </NavLink>
+          </div>
+        </div>
+        <div className="">
+          <span className="navbar-subtitle">GESTIÓN</span>
+          <div className="container-options">
             <NavLink
               to={'/products'}
               end
@@ -102,11 +107,6 @@ export default function Navbar() {
                 </div>
               </li>
             </NavLink>
-          </div>
-        </div>
-        <div className="">
-          <span className="navbar-subtitle">GESTIÓN</span>
-          <div className="container-options">
             <NavLink
               to={'/customers'}
               end

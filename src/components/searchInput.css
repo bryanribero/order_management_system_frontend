@@ -1,0 +1,28 @@
+.input-search {
+  appearance: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0.8rem;
+  padding-left: 40px;
+  color: var(--text-black);
+  border-radius: 10px;
+  border: 0.5px solid var(--border);
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.icon-search {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-black);
+}
+
+.input-search:focus {
+  border-color: var(--border-focus);
+}
