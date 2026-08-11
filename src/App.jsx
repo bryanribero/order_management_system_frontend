@@ -12,6 +12,7 @@ import { AnimatePresence } from 'framer-motion'
 import PublicRoute from './components/routes/PublicRoute'
 import PrivateRoute from './components/routes/PrivateRoute'
 import Products from './pages/Products'
+import { ProductProvider } from './context/ProductContext'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -57,7 +58,9 @@ function AnimatedRoutes() {
           path="/products"
           element={
             <PrivateRoute>
-              <Products />
+              <ProductProvider>
+                <Products />
+              </ProductProvider>
             </PrivateRoute>
           }
         />

@@ -14,6 +14,7 @@ import { authenticatedFetch } from '../services/authenticatedFetch'
 import Pagination from '../components/Pagination'
 import ProductModal from '../components/ProductModal'
 import { formatPrice } from '../utils/formatPrice'
+import { ProductContext } from '../context/ProductContext'
 
 export default function Products() {
   const [inputProduct, setInputProduct] = useState('')
@@ -23,8 +24,74 @@ export default function Products() {
   const { accessToken, setAccessToken } = useContext(AuthContext)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const [isProductModalOpen, setIsProductModalOpen] = useState(false)
+  const [isCreateProductModalOpen, setIsCreateProductModalOpen] =
+    useState(false)
+  const [isUpdateProductModalOpen, setIsUpdateProductModalOpen] =
+    useState(false)
   const [stats, setStats] = useState({})
+  const { idProduct, setIdProduct } = useContext(ProductContext)
+
+  const updateProduct = async (body) => {
+    const updateBody = Object.fromEntries(
+      Object.entries(body).filter(([, value]) => value !== '')
+    )
+
+    try {
+      const response = await authenticatedFetch(
+        `https://order-management-system-995e.onrender.com/api/products/${idProduct}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updateBody),
+        },
+        accessToken,
+        setAccessToken
+      )
+
+      if (response.status === 400) {
+        const data = await response.json()
+
+        throw data
+      }
+
+      setIdProduct('')
+
+      await Promise.all([fetchProducts(), fetchStats()])
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  }
+
+  const createProduct = async (body) => {
+    try {
+      const response = await authenticatedFetch(
+        'https://order-management-system-995e.onrender.com/api/products',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(body),
+        },
+        accessToken,
+        setAccessToken
+      )
+
+      if (response.status === 400) {
+        const data = await response.json()
+
+        throw data
+      }
+
+      await Promise.all([fetchProducts(), fetchStats()])
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
+  }
 
   const fetchProducts = async () => {
     const params = new URLSearchParams({
@@ -130,7 +197,7 @@ export default function Products() {
 
             <button
               className="add-product"
-              onClick={() => setIsProductModalOpen(true)}
+              onClick={() => setIsCreateProductModalOpen(true)}
             >
               Nuevo producto
             </button>
@@ -183,6 +250,7 @@ export default function Products() {
                   products={products}
                   onProductDeleted={fetchProducts}
                   onStatsDeleted={fetchStats}
+                  onOpenEdit={() => setIsUpdateProductModalOpen(true)}
                 />
                 <Pagination
                   currentPage={currentPage}
@@ -195,11 +263,24 @@ export default function Products() {
         </main>
       </ComponentTransition>
       <ProductModal
-        isOpen={isProductModalOpen}
-        onClose={() => setIsProductModalOpen(false)}
+        isOpen={isCreateProductModalOpen}
+        onClose={setIsCreateProductModalOpen}
         categories={categories}
-        onCreateProduct={fetchProducts}
-        onCreateStats={fetchStats}
+        titleText={'Nuevo producto'}
+        subTitle={'Agregá un producto al catálogo.'}
+        loadingTextButton={'Creando producto...'}
+        textButton={'Crear producto'}
+        onSubmit={createProduct}
+      />
+      <ProductModal
+        isOpen={isUpdateProductModalOpen}
+        onClose={setIsUpdateProductModalOpen}
+        categories={categories}
+        titleText={'Actualizar producto'}
+        subTitle={'Actualizá un producto del catálogo.'}
+        loadingTextButton={'Actualizando producto...'}
+        textButton={'Actualizar producto'}
+        onSubmit={updateProduct}
       />
     </div>
   )

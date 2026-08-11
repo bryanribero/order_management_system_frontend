@@ -6,14 +6,18 @@ import { useState } from 'react'
 import { authenticatedFetch } from '../services/authenticatedFetch'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import { ProductContext } from '../context/ProductContext'
 
 export default function TableProducts({
   products,
   onProductDeleted,
   onStatsDeleted,
+  onOpenEdit,
 }) {
   const { accessToken, setAccessToken } = useContext(AuthContext)
   const [deletingProductId, setDeletingProductId] = useState(null)
+
+  const { setIdProduct } = useContext(ProductContext)
 
   const handlerDeleteProduct = async (idProduct) => {
     setDeletingProductId(idProduct)
@@ -63,13 +67,22 @@ export default function TableProducts({
               <td>${formatPrice(product.price)}</td>
               <td>{product.stock}</td>
               <td className="td-button">
-                <button className="button-edit">
+                <button
+                  className="button-edit"
+                  onClick={() => {
+                    onOpenEdit()
+                    setIdProduct(product.id_product)
+                    console.log(product.id_product)
+                  }}
+                >
                   <PencilLine size={18} />
                 </button>
                 <button
                   className="button-delite"
                   disabled={deletingProductId === product.id_product}
-                  onClick={() => handlerDeleteProduct(product.id_product)}
+                  onClick={() => {
+                    handlerDeleteProduct(product.id_product)
+                  }}
                 >
                   {deletingProductId === product.id_product ? (
                     <LoaderCircle size={18} className="spinner" />

@@ -1,36 +1,32 @@
 import { useState } from 'react'
 import './productModal.css'
 import { ChevronDown } from 'lucide-react'
-import { useContext } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import { authenticatedFetch } from '../services/authenticatedFetch'
 import FormError from './FormError'
 
 export default function ProductModal({
   isOpen,
   onClose,
   categories,
-  onCreateProduct,
-  onCreateStats,
+  titleText,
+  subTitle,
+  onSubmit,
+  loadingTextButton,
+  textButton,
 }) {
   const [name, setName] = useState('')
   const [sku, setSku] = useState('')
   const [price, setPrice] = useState('')
   const [stock, setStock] = useState('')
-  const [idCategory, setIdCategory] = useState('0')
+  const [idCategory, setIdCategory] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState([])
-  const [success, setSuccess] = useState(false)
 
-  const { accessToken, setAccessToken } = useContext(AuthContext)
-
-  const createProduct = async (e) => {
+  const handlerSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     setErrors([])
-    setSuccess(false)
 
-    const category = idCategory === '0' ? 20 : Number(idCategory)
+    const category = idCategory === '' ? 20 : Number(idCategory)
 
     let body = {}
 
@@ -38,30 +34,11 @@ export default function ProductModal({
     if (sku) body.sku = sku
     if (price) body.price = price
     if (stock) body.stock = stock
-    if (idCategory) body.id_category = category
+
+    body.id_category = category
 
     try {
-      const response = await authenticatedFetch(
-        'https://order-management-system-995e.onrender.com/api/products',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(body),
-        },
-        accessToken,
-        setAccessToken
-      )
-
-      const data = await response.json()
-
-      if (response.status === 400) {
-        setIsLoading(false)
-        setErrors(data.errors)
-        return
-      }
-
+      await onSubmit(body)
       setIsLoading(false)
       setErrors([])
 
@@ -69,17 +46,12 @@ export default function ProductModal({
       setSku('')
       setPrice('')
       setStock('')
-      setIdCategory('0')
-      setSuccess(true)
+      setIdCategory('')
 
-      await onCreateProduct()
-      await onCreateStats()
-
-      setTimeout(() => {
-        setSuccess(false)
-      }, 3000)
+      onClose(false)
     } catch (err) {
-      console.error(err)
+      setIsLoading(false)
+      setErrors(err.errors)
     }
   }
 
@@ -90,21 +62,29 @@ export default function ProductModal({
       <div className="product-modal">
         <header className="modal-header">
           <div>
-            <h2>Nuevo producto</h2>
-            <p>Agregá un producto al catálogo.</p>
+            <h2>{titleText}</h2>
+            <p>{subTitle}</p>
           </div>
 
-          <button type="button" onClick={onClose}>
+          <button
+            type="button"
+            onClick={() => {
+              onClose(false)
+              setIsLoading(false)
+              setErrors([])
+
+              setName('')
+              setSku('')
+              setPrice('')
+              setStock('')
+              setIdCategory('')
+            }}
+          >
             ✕
           </button>
         </header>
 
-        {success && (
-          <p role="alert" className="success-product">
-            Producto creado correctamente
-          </p>
-        )}
-        <form className="product-form">
+        <form className="product-form" onSubmit={handlerSubmit}>
           <div className="product-div-form">
             <div className="form-group">
               <label htmlFor="name">Nombre</label>
@@ -171,7 +151,7 @@ export default function ProductModal({
                 value={idCategory}
                 onChange={(e) => setIdCategory(e.target.value)}
               >
-                <option value="0">Seleccioná una categoría</option>
+                <option value="">Seleccioná una categoría</option>
                 {categories.map((category) => (
                   <option
                     key={category.id_category}
@@ -182,24 +162,19 @@ export default function ProductModal({
                 ))}
               </select>
               <ChevronDown className="select-icon-add" size={18} />
-              <FormError errors={errors} field={'stock'} />
+              <FormError errors={errors} field={'id_category'} />
             </div>
           </div>
 
           <footer className="modal-footer">
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="auth-button"
-              onClick={createProduct}
-            >
+            <button type="submit" disabled={isLoading} className="auth-button">
               {isLoading ? (
                 <>
                   <span className="spinner"></span>
-                  Creando producto...
+                  {loadingTextButton}
                 </>
               ) : (
-                <>Crear producto</>
+                <>{textButton}</>
               )}
             </button>
           </footer>
