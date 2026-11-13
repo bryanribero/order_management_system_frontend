@@ -1,7 +1,7 @@
 .input-search {
   appearance: none;
   outline: none;
-  background-color: transparent;
+  background-color: var(--bg-layout);
   padding: 0.8rem;
   padding-left: 40px;
   color: var(--text-black);

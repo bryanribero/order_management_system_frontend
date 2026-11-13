@@ -1,13 +1,21 @@
-.cards-layout {
+.container-main {
+  min-width: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: clamp(1rem, 1.5vw, 1.5rem);
+  padding: clamp(0.5rem, 1.5vw, 1.5rem) clamp(0.75rem, 3vw, 3rem);
 }
 
-.container-products-main {
+.container-header-products,
+.products-layout,
+.products-table-section {
+  min-width: 0;
+}
+
+.cards-layout {
   display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-width: 0;
   gap: 1.5rem;
-  padding: 1.5rem 3rem;
 }
 
 .products-layout {
@@ -15,12 +23,17 @@
   gap: 1.5rem;
 }
 
+.products-table-section > .products-table {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .products-table-section {
   background: var(--bg-layout);
   border-radius: 18px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   width: 100%;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.123);
 }
@@ -54,7 +67,9 @@
   align-items: center;
   gap: 0.5rem;
   height: fit-content;
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
   background-color: var(--button);
   border-radius: 12px;
   transition: all 0.3s ease-in-out;
@@ -75,4 +90,63 @@
   grid-template-columns: 50% 20%;
   padding: 1rem;
   justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .container-main {
+    gap: 1rem;
+    padding: 0.5rem 0.85rem 6.5rem;
+  }
+
+  .products-filters {
+    grid-auto-rows: 48px;
+  }
+
+  .container-header-products {
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .container-products-title {
+    flex: 1;
+    gap: 0.2rem;
+  }
+
+  .title-products {
+    font-size: 2rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  .sub-title-products {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    max-width: 16rem;
+  }
+
+  .cards-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .products-filters {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+    width: 100%;
+    min-width: 0;
+    padding: 0.8rem 0 0.8rem;
+  }
+
+  .products-table-section {
+    padding: 0.3rem;
+  }
+
+  .container-product-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .container-product-table .products-table {
+    min-width: 700px;
+  }
 }

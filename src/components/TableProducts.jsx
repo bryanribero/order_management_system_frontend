@@ -67,29 +67,31 @@ export default function TableProducts({
               <td>${formatPrice(product.price)}</td>
               <td>{product.stock}</td>
               <td className="td-button">
-                <button
-                  className="button-edit"
-                  onClick={() => {
-                    onOpenEdit()
-                    setIdProduct(product.id_product)
-                    console.log(product.id_product)
-                  }}
-                >
-                  <PencilLine size={18} />
-                </button>
-                <button
-                  className="button-delite"
-                  disabled={deletingProductId === product.id_product}
-                  onClick={() => {
-                    handlerDeleteProduct(product.id_product)
-                  }}
-                >
-                  {deletingProductId === product.id_product ? (
-                    <LoaderCircle size={18} className="spinner" />
-                  ) : (
-                    <Trash2 size={18} />
-                  )}
-                </button>
+                <div className="table-actions">
+                  <button
+                    className="button-edit"
+                    onClick={() => {
+                      onOpenEdit()
+                      setIdProduct(product.id_product)
+                      console.log(product.id_product)
+                    }}
+                  >
+                    <PencilLine size={18} />
+                  </button>
+                  <button
+                    className="button-delite"
+                    disabled={deletingProductId === product.id_product}
+                    onClick={() => {
+                      handlerDeleteProduct(product.id_product)
+                    }}
+                  >
+                    {deletingProductId === product.id_product ? (
+                      <LoaderCircle size={18} className="spinner" />
+                    ) : (
+                      <Trash2 size={18} />
+                    )}
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

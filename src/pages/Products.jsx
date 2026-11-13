@@ -186,7 +186,7 @@ export default function Products() {
     <div className="layout">
       <Navbar />
       <ComponentTransition>
-        <main className="container-products-main">
+        <main className="container-main">
           <header className="container-header-products">
             <div className="container-products-title">
               <h1 className="title-products">Productos</h1>

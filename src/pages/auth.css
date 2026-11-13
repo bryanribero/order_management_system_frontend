@@ -316,7 +316,7 @@
     padding: 0.7rem;
   }
 
-  button {
+  .main-login button {
     padding: 0.9rem;
     font-size: 0.9rem;
   }
@@ -362,7 +362,7 @@
     box-sizing: border-box;
   }
 
-  button {
+  .main-login button {
     padding: 0.9rem;
     font-size: 0.9rem;
     width: 100%;
@@ -397,7 +397,7 @@
     padding: 0.6rem;
   }
 
-  button {
+  .main-login button {
     padding: 0.8rem;
     font-size: 0.85rem;
   }

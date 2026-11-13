@@ -1,55 +1,69 @@
 .container-stat-card {
+  width: 100%;
+  min-width: 0;
+
   background: var(--bg-layout);
-  border-radius: 18px;
-  padding: 1rem;
+  border-radius: clamp(12px, 1.2vw, 18px);
+
+  padding: clamp(0.75rem, 1.5vw, 1rem);
+
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: clamp(0.5rem, 1.2vw, 1rem);
+
+  box-shadow: 2px 2px 6px var(--shadow);
+}
+
+.container-stat-card {
   width: 100%;
+  min-width: 0;
+
+  background: var(--bg-layout);
+  border-radius: clamp(12px, 1.2vw, 18px);
+
+  padding: clamp(0.75rem, 1.2vw, 1rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+
   box-shadow: 2px 2px 6px var(--shadow);
 }
 
 .container-icon-stat-card {
   display: flex;
-  gap: 1.2rem;
   align-items: center;
+  gap: clamp(0.6rem, 1.2vw, 1.2rem);
+
+  min-width: 0;
 }
 
-.icon-stat-default {
-  width: 60px;
-  height: 60px;
+.icon-stat-default,
+.icon-stat-yellow,
+.icon-stat-red {
+  width: clamp(40px, 4vw, 60px);
+  height: clamp(40px, 4vw, 60px);
+
+  min-width: clamp(40px, 4vw, 60px);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   border-radius: 50%;
+}
+
+.icon-stat-default {
   background: var(--background-icon-package-stat);
   color: var(--color-icon-package-stat);
 }
 
 .icon-stat-yellow {
-  width: 60px;
-  height: 60px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 50%;
   background: var(--background-icon-package-stat-yellow);
   color: var(--color-icon-package-stat-yellow);
 }
 
 .icon-stat-red {
-  width: 60px;
-  height: 60px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 50%;
   background: var(--background-icon-package-stat-red);
   color: var(--color-icon-package-stat-red);
 }
@@ -57,23 +71,37 @@
 .container-title-stat {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: clamp(0.15rem, 0.3vw, 0.3rem);
+
+  min-width: 0;
 }
 
 .container-icon-stat-card h2 {
   color: var(--text-black);
-  font-size: 0.9rem;
+  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
   font-weight: 500;
+
+  margin: 0;
 }
 
 .container-icon-stat-card p {
   color: var(--text-black);
-  font-size: 1.8rem;
+  font-size: clamp(1rem, 1.8vw, 1.8rem);
   font-weight: 700;
+
+  margin: 0;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .container-stat-card > p {
   color: var(--text-black-low);
-  font-size: 0.85rem;
+  font-size: clamp(0.7rem, 0.85vw, 0.85rem);
   font-weight: 500;
+
+  margin: 0;
+}
+
+.cards-layout > :nth-child(4) .container-icon-stat-card p {
+  font-size: clamp(0.5rem, 1.3vw, 1.6rem);
 }

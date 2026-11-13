@@ -1,8 +1,11 @@
 .container-product-table {
   width: 100%;
+  min-width: 0;
   min-height: 400px;
   display: flex;
   flex-direction: column;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-head {
@@ -13,6 +16,7 @@
 
 .products-table {
   width: 100%;
+  min-width: 780px;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
@@ -21,9 +25,22 @@
 .products-table th,
 .products-table td {
   text-align: left;
-  padding: 0.8rem 1rem;
-  font-size: 0.9rem;
+  height: 56px;
+  padding: 0 clamp(0.4rem, 1vw, 1rem);
+  font-size: clamp(0.68rem, 0.95vw, 0.9rem);
   color: var(--text-black);
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.products-table thead tr {
+  height: 48px;
+}
+
+.products-table th {
+  white-space: nowrap;
 }
 
 .item-name {
@@ -34,8 +51,10 @@
   appearance: none;
   border: none;
   outline: none;
-  height: fit-content;
-  padding: 0.3rem 0.6rem;
+  width: clamp(26px, 2.2vw, 32px);
+  height: clamp(26px, 2.2vw, 32px);
+  flex: 0 0 clamp(26px, 2.2vw, 32px);
+  padding: 0.25rem;
   background-color: transparent;
   border: 1px solid var(--border-table);
   color: var(--text-black);
@@ -52,8 +71,10 @@
   appearance: none;
   border: none;
   outline: none;
-  height: fit-content;
-  padding: 0.3rem 0.6rem;
+  width: clamp(26px, 2.2vw, 32px);
+  height: clamp(26px, 2.2vw, 32px);
+  flex: 0 0 clamp(26px, 2.2vw, 32px);
+  padding: 0.25rem;
   background-color: var(--error-bg);
   border: 1px solid var(--error-border);
   color: var(--error-color);
@@ -62,22 +83,36 @@
   transition: all 0.2s ease-in-out;
 }
 
-.td-button {
-  display: flex;
-  gap: 0.8rem;
+.products-table td.td-button {
+  overflow: visible;
+  text-overflow: clip;
 }
 
-.button-edit:hover,
-.button-delite:hover {
-  transform: scale(1.1);
+.table-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.2rem, 0.5vw, 0.4rem);
+  white-space: nowrap;
+}
+
+.button-edit:disabled,
+.button-delite:disabled {
+  cursor: wait;
+}
+
+.button-edit svg,
+.button-delite svg {
+  width: clamp(14px, 1.1vw, 16px);
+  height: clamp(14px, 1.1vw, 16px);
 }
 
 .products-table th:nth-child(1) {
-  width: 25%;
+  width: 20%;
 }
 
 .products-table th:nth-child(2) {
-  width: 25%;
+  width: 18%;
 }
 
 .products-table th:nth-child(3) {
@@ -85,7 +120,7 @@
 }
 
 .products-table th:nth-child(4) {
-  width: 12%;
+  width: 22%;
 }
 
 .products-table th:nth-child(5) {
@@ -93,5 +128,10 @@
 }
 
 .products-table th:nth-child(6) {
-  width: 12%;
+  width: 15%;
+}
+
+.products-table th:nth-child(4),
+.products-table td:nth-child(4) {
+  font-variant-numeric: tabular-nums;
 }

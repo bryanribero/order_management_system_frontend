@@ -10,7 +10,7 @@
   padding: 0 2.5rem 0 0.8rem;
   border: 0.5px solid var(--border);
   border-radius: 10px;
-  background-color: transparent;
+  background-color: var(--bg-layout);
   color: var(--text-black);
   font-size: 0.9rem;
   cursor: pointer;
