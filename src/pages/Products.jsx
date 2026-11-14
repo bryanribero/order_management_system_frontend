@@ -96,7 +96,7 @@ export default function Products() {
   const fetchProducts = async () => {
     const params = new URLSearchParams({
       page: currentPage,
-      limit: 5,
+      limit: 10,
     })
 
     if (inputProduct.trim()) {

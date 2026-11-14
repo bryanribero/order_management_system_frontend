@@ -1,0 +1,88 @@
+.customers-main {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.customers-header,
+.customer-detail-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.customers-header h1 {
+  color: var(--text-black);
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+  line-height: 1.2;
+}
+.customers-header p {
+  margin-top: 0.4rem;
+  color: var(--text-black-low);
+}
+.customers-add-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 46px;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--button);
+  color: white;
+  font: 600 0.9rem var(--sans);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.customers-add-button:hover {
+  background: var(--button-hover);
+}
+.customers-panel {
+  display: flex;
+  min-height: 400px;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--bg-layout);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.12);
+}
+.customers-search-wrap {
+  margin: 1rem 1.1rem;
+}
+.customers-search-wrap .input-search {
+  height: 52px;
+  border-radius: 11px;
+}
+.customers-panel > .pagination {
+  margin-top: auto;
+}
+.customers-message {
+  padding: 2rem 1rem;
+  color: var(--text-black-low);
+  text-align: center;
+}
+.customers-load-error {
+  color: var(--error-color);
+}
+@media (max-width: 768px) {
+  .customers-header {
+    align-items: flex-start;
+  }
+  .customers-header h1 {
+    font-size: 1.65rem;
+  }
+  .customers-header p {
+    max-width: 14rem;
+    font-size: 0.88rem;
+  }
+  .customers-add-button {
+    min-height: 42px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.78rem;
+  }
+  .customers-panel {
+    min-height: 380px;
+  }
+  .customers-search-wrap {
+    margin: 0.8rem;
+  }
+}

@@ -12,7 +12,12 @@ import { AnimatePresence } from 'framer-motion'
 import PublicRoute from './components/routes/PublicRoute'
 import PrivateRoute from './components/routes/PrivateRoute'
 import Products from './pages/Products'
+import Couriers from './pages/Couriers'
+import Customers from './pages/Customers'
+import CustomerDetail from './pages/CustomerDetail'
 import { ProductProvider } from './context/ProductContext'
+import { CourierProvider } from './context/CourierContext'
+import { CustomerProvider } from './context/CustomerContext'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -61,6 +66,36 @@ function AnimatedRoutes() {
               <ProductProvider>
                 <Products />
               </ProductProvider>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/couriers"
+          element={
+            <PrivateRoute>
+              <CourierProvider>
+                <Couriers />
+              </CourierProvider>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <PrivateRoute>
+              <CustomerProvider>
+                <Customers />
+              </CustomerProvider>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/customers/:customerId"
+          element={
+            <PrivateRoute>
+              <CustomerProvider>
+                <CustomerDetail />
+              </CustomerProvider>
             </PrivateRoute>
           }
         />

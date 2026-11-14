@@ -1,6 +1,5 @@
 .container-product-table {
   width: 100%;
-  min-width: 0;
   min-height: 400px;
   display: flex;
   flex-direction: column;

@@ -1,0 +1,87 @@
+.couriers-main {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.couriers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 clamp(0rem, 0.5vw, 0.5rem);
+}
+.couriers-header h1 {
+  color: var(--text-black);
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+  line-height: 1.2;
+}
+.couriers-header p {
+  margin-top: 0.4rem;
+  color: var(--text-black-low);
+  font-size: 1rem;
+}
+.courier-add-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 46px;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 12px;
+  background: var(--button);
+  color: white;
+  font: 600 0.9rem var(--sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.courier-add-button:hover {
+  background: var(--button-hover);
+}
+.couriers-panel {
+  display: flex;
+  min-height: 400px;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--bg-layout);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.12);
+}
+.couriers-search-wrap {
+  margin: 1rem 1.1rem;
+}
+.couriers-search-wrap .input-search {
+  height: 52px;
+  border-radius: 11px;
+}
+.couriers-search-wrap .input-search:focus {
+  border-color: var(--button);
+  box-shadow: 0 0 0 2px rgba(52, 121, 91, 0.12);
+}
+.couriers-panel > .pagination {
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .couriers-header {
+    align-items: flex-start;
+  }
+  .couriers-header h1 {
+    font-size: 1.65rem;
+  }
+  .couriers-header p {
+    max-width: 14rem;
+    font-size: 0.88rem;
+  }
+  .courier-add-button {
+    min-height: 42px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.78rem;
+  }
+  .couriers-panel {
+    min-height: 380px;
+  }
+  .couriers-search-wrap {
+    margin: 0.8rem;
+  }
+}
