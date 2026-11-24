@@ -167,6 +167,10 @@
   background: #dbeafe;
   color: #1e40af;
 }
+.order-status.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
 .order-detail-button {
   padding: 0.35rem 0.55rem;
   border: 1px solid var(--border-table);
@@ -179,6 +183,31 @@
   height: 100px !important;
   color: var(--text-black-low);
   text-align: center !important;
+}
+.customer-order-details-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(17, 24, 39, 0.48);
+}
+.customer-order-details-content {
+  width: min(980px, 100%);
+  max-height: min(92dvh, 900px);
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22);
+}
+.customer-order-details-loading,
+.customer-order-details-error {
+  padding: 1.5rem;
+  color: var(--text-black-low);
+  text-align: center;
+}
+.customer-order-details-error {
+  color: var(--error-color);
 }
 .customer-not-found {
   padding: 2rem;
@@ -251,5 +280,14 @@
   }
   .customer-detail-toolbar .customers-add-button svg {
     flex: 0 0 auto;
+  }
+  .customer-order-details-overlay {
+    padding: 0;
+  }
+  .customer-order-details-content {
+    width: 100%;
+    height: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
   }
 }

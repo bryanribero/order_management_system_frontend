@@ -15,6 +15,7 @@ import Products from './pages/Products'
 import Couriers from './pages/Couriers'
 import Customers from './pages/Customers'
 import CustomerDetail from './pages/CustomerDetail'
+import Orders from './pages/Orders'
 import { ProductProvider } from './context/ProductContext'
 import { CourierProvider } from './context/CourierContext'
 import { CustomerProvider } from './context/CustomerContext'
@@ -55,6 +56,14 @@ function AnimatedRoutes() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <PrivateRoute>
+              <Orders />
             </PrivateRoute>
           }
         />
