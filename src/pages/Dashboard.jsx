@@ -196,7 +196,6 @@ export default function Dashboard() {
           <div className="dashboard-page">
             <header className="dashboard-header">
               <div>
-                <p className="dashboard-eyebrow">ORDENA / ESTADÍSTICAS</p>
                 <h1>¡Hola! 👋</h1>
                 <p className="dashboard-subtitle">
                   Un resumen sencillo de la actividad de tu negocio.
