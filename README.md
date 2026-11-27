@@ -1,18 +1,9 @@
-# React + Vite
+# Ordena
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[English version](README.en.md)**
 
-Currently, two official plugins are available:
+**[Abrir la aplicación web](https://order-management-system-frontend-sigma.vercel.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Ordena es una aplicación web para gestionar pedidos y las tareas diarias de un negocio desde un solo lugar. Permite crear y consultar pedidos, administrar productos, clientes y repartidores, y revisar un resumen de ventas y estados de pedidos.
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Este repositorio contiene el frontend de Ordena, desarrollado con React y Vite. La sección de Configuración está en construcción.
