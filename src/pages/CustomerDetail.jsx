@@ -195,8 +195,7 @@ export default function CustomerDetail() {
   })
   const customer = customers.find((item) => String(item.id) === customerId)
   const customerApiId = customer?.id_customer ?? customer?.id
-  const customerOrdersPageSize =
-    customerOrdersLimit === 'all' ? 10 : Number(customerOrdersLimit)
+  const customerOrdersPageSize = Number(customerOrdersLimit)
   const isLoadingCustomerOrders =
     Boolean(customerApiId) &&
     (loadedOrdersFor.customerId !== String(customerApiId) ||
@@ -583,9 +582,8 @@ export default function CustomerDetail() {
                           setCustomerOrdersPage(1)
                         }}
                       >
-                        <option value="5">Mostrar: Últimos 5</option>
-                        <option value="10">Mostrar: Últimos 10</option>
-                        <option value="all">Mostrar: Todos</option>
+                        <option value="5">5 por página</option>
+                        <option value="10">10 por página</option>
                       </select>
                     </label>
                   </div>
@@ -649,8 +647,9 @@ export default function CustomerDetail() {
                       </tbody>
                     </table>
                   </div>
-                  {customerOrdersLimit === 'all' &&
-                    customerOrdersTotalPages > 1 && (
+                  {!isLoadingCustomerOrders &&
+                    !customerOrdersError &&
+                    customerOrders.length > 0 && (
                       <Pagination
                         currentPage={customerOrdersPage}
                         setCurrentPage={setCustomerOrdersPage}

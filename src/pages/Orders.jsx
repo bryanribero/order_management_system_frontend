@@ -12,7 +12,7 @@ import './orders.css'
 
 const apiBaseUrl = 'https://order-management-system-995e.onrender.com/api'
 const statusFilters = ['Todos', 'Pendiente', 'Completado', 'Cancelado']
-const ordersPerPage = 5
+const ordersPerPage = 20
 const getOrderCreatedAt = (order) => order.created_at
 
 const createOrderDraft = () => ({
