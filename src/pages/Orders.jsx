@@ -40,7 +40,6 @@ const formatOrderStatus = (status) => {
     pending: 'Pendiente',
     completed: 'Completado',
     cancelled: 'Cancelado',
-    canceled: 'Cancelado',
   }
   return statusLabels[normalizedStatus] || status || 'Pendiente'
 }

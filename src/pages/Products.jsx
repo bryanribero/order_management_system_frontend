@@ -147,8 +147,6 @@ export default function Products() {
 
     const data = await response.json()
 
-    console.log(data)
-
     data.totalInventoryValue = formatPrice(data.totalInventoryValue)
     setStats(data)
   }

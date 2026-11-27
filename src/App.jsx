@@ -16,6 +16,7 @@ import Couriers from './pages/Couriers'
 import Customers from './pages/Customers'
 import CustomerDetail from './pages/CustomerDetail'
 import Orders from './pages/Orders'
+import Settings from './pages/Settings'
 import { ProductProvider } from './context/ProductContext'
 import { CourierProvider } from './context/CourierContext'
 import { CustomerProvider } from './context/CustomerContext'
@@ -64,6 +65,14 @@ function AnimatedRoutes() {
           element={
             <PrivateRoute>
               <Orders />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/config"
+          element={
+            <PrivateRoute>
+              <Settings />
             </PrivateRoute>
           }
         />

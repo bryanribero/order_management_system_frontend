@@ -1,0 +1,49 @@
+.settings-content {
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+}
+
+.settings-coming-soon {
+  display: grid;
+  width: min(100%, 520px);
+  justify-items: center;
+  gap: 0.9rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--border-table);
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.settings-coming-soon-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 16px;
+  background: #e6f4ea;
+  color: var(--button);
+}
+
+.settings-coming-soon-badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #fff7e8;
+  color: #996b15;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.settings-coming-soon h1 {
+  color: var(--text-black);
+  font-size: 1.5rem;
+}
+
+.settings-coming-soon p {
+  max-width: 380px;
+  color: var(--text-black-low);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}

@@ -73,7 +73,6 @@ export default function TableProducts({
                     onClick={() => {
                       onOpenEdit()
                       setIdProduct(product.id_product)
-                      console.log(product.id_product)
                     }}
                   >
                     <PencilLine size={18} />
