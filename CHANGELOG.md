@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/bryanribero/order_management_system_frontend/compare/v1.0.0...v1.0.1) (2026-11-28)
+
+
+### Bug Fixes
+
+* **favicon:** Renombrando el favicon para que funcione en chrome ([90584f3](https://github.com/bryanribero/order_management_system_frontend/commit/90584f3e8b0989cb3d09729c6c290cf479271f39))
+
 ## 1.0.0 (2026-11-27)
 
 
